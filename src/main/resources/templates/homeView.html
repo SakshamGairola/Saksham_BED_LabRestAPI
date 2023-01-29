@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+    <meta charset="UTF-8" content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <meta charset="UTF-8">
+    <title>Student Management System</title>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-primary">
+        <div class="navbar">
+            <a class="navbar-brand mb-3 mx-auto" href="#">Student Management System</a>
+            <a class="nav-link navbar-brand text-sm font-weight-normal mb-3 mx-auto" th:href="@{/}">Home</a>
+            <a class="nav-link navbar-brand text-sm font-weight-normal mb-3 mx-auto" th:href="@{/create/new}">New Student</a>
+            <a class="nav-link navbar-brand text-sm font-weight-normal mb-3 mx-auto" th:href="@{/StudentManagement/logout}">Logout</a>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <h1>List of all Students</h1>
+        </div>
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark text-center">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Course</th>
+                    <th>Country</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody class="text-center">
+                <tr class="text-center" th:each="eachStudent:${allStudents}">
+                    <td th:text="${eachStudent.getFirstName()}"/>
+                    <td th:text="${eachStudent.getLastName()}"/>
+                    <td th:text="${eachStudent.getCourse()}"/>
+                    <td th:text="${eachStudent.getCountry()}"/>
+                    <td class="d-flex justify-content-around">
+                        <a class="btn btn-primary" th:href="@{/edit/{studentID}(studentID=${eachStudent.getStudentID()})}">
+                            Edit</a>
+                        <a class="btn btn-danger" th:href="@{/delete/{studentID}(studentID=${eachStudent.getStudentID()})}">
+                            Delete</a>
+                        <a class="btn btn-info" th:href="@{/view/{studentID}(studentID=${eachStudent.getStudentID()})}">
+                            View</a>
+                </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+<scripts>
+    <script crossorigin="anonymous"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script crossorigin="anonymous"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+    <script crossorigin="anonymous"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+</scripts>
+</html>
