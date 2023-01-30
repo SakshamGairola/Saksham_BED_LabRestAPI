@@ -18,7 +18,7 @@ public class StudentReadController {
     @Autowired
     StudentReadService readService;
 
-    @GetMapping("/")
+    @RequestMapping("/")
     public ModelAndView getAllStudents(){
         ModelAndView modelAndView = new ModelAndView("homeView");
         List<Student> allStudents = this.readService.getALlStudents();
