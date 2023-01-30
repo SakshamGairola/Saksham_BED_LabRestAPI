@@ -1,6 +1,9 @@
 package com.greatlearning.studentMgmt.entity;
 
-import jakarta.persistence.*;
+//Deprecated import
+import javax.persistence.*;
+
+//import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,13 +13,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table
+@Table(name = "Students")
 @Data
 public class Student {
 
     @Id
     @Column(name = "studentID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long studentID;
 
     @Column(name = "firstName")
