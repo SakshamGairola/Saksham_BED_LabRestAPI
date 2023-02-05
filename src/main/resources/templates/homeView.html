@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+                xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
@@ -37,9 +38,13 @@
                     <td th:text="${eachStudent.getCourse()}"/>
                     <td th:text="${eachStudent.getCountry()}"/>
                     <td class="d-flex justify-content-around">
-                        <a class="btn btn-primary" th:href="@{/edit/{studentID}(studentID=${eachStudent.getStudentID()})}">
+                        <a class="btn btn-primary"
+                           sec:authorize="hasAuthority('ADMIN')"
+                           th:href="@{/edit/{studentID}(studentID=${eachStudent.getStudentID()})}">
                             Edit</a>
-                        <a class="btn btn-danger" th:href="@{/delete/{studentID}(studentID=${eachStudent.getStudentID()})}">
+                        <a class="btn btn-danger"
+                           sec:authorize="hasAuthority('ADMIN')"
+                           th:href="@{/delete/{studentID}(studentID=${eachStudent.getStudentID()})}">
                             Delete</a>
                         <a class="btn btn-info" th:href="@{/view/{studentID}(studentID=${eachStudent.getStudentID()})}">
                             View</a>
